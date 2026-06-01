@@ -4,12 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dormire è facile... se sai come farlo! — Roberto Boscia</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dormire è facile... se sai come farlo! — Roberto Boscia">
+  <meta property="og:description" content="Il sistema completo, scientifico e testato per ottimizzare ogni ora di sonno, svegliarti riposato ogni mattina e trasformare il sonno nel tuo più potente strumento di performance.">
+  <meta property="og:image" content="https://robyboscia.github.io/dormire-facile/images/og_image.webp">
+  <meta property="og:url" content="https://robyboscia.github.io/dormire-facile/">
+  <meta property="og:type" content="website">
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="images/book_cover.webp" fetchpriority="high">
+
+  <!-- Fonts: preconnect + non-blocking load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap"></noscript>
   <style>
     :root {
       --petrol:#0E2A36; --slate:#2F4652; --bg:#F6F5F1; --white:#FFFFFF;
@@ -54,7 +63,8 @@
     .check-icon{flex-shrink:0;margin-top:2px;}
     .stat-num{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1;color:var(--text-d);}
     .price{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1;}
-    .reveal{opacity:0;transform:translateY(44px);}
+    .reveal{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s ease;}
+    .reveal.revealed{opacity:1;transform:translateY(0);}
     @keyframes enterUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
     .e1{animation:enterUp .7s ease forwards .05s;opacity:0;}
     .e2{animation:enterUp .7s ease forwards .2s;opacity:0;}
@@ -160,7 +170,7 @@
           <div class="book-3d">
             <div class="book-spine">BOSCIA</div>
             <div class="book-front">
-              <img src="book_cover.jpg" alt="Dormire è facile se sai come farlo — Roberto Boscia">
+              <img src="images/book_cover.webp" alt="Dormire è facile se sai come farlo — Roberto Boscia" width="220" height="308" fetchpriority="high">
             </div>
           </div>
         </div>
@@ -833,17 +843,18 @@
 
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('.reveal').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 48 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+  // Scroll fade-in via IntersectionObserver
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
       }
-    );
-  });
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+  // Counter animation
   function animateCount(el, target, dur) {
     const t0 = performance.now();
     (function tick(now) {
@@ -854,27 +865,26 @@
       else el.textContent = target;
     })(t0);
   }
-  document.querySelectorAll('[data-count]').forEach(el => {
-    ScrollTrigger.create({
-      trigger: el, start: 'top 90%', once: true,
-      onEnter: () => animateCount(el, +el.dataset.count, 1400)
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target, +entry.target.dataset.count, 1400);
+        countObserver.unobserve(entry.target);
+      }
     });
-  });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
 
+  // Sticky bar
   const stickyBar = document.getElementById('stickyBar');
-  ScrollTrigger.create({
-    trigger: document.querySelector('section.dark-section'),
-    start: 'bottom top',
-    onEnter: () => stickyBar.classList.add('visible'),
-    onLeaveBack: () => stickyBar.classList.remove('visible')
-  });
-
-  document.querySelectorAll('.dark-section > div[style*="radial-gradient"]').forEach((glow, i) => {
-    gsap.to(glow, {
-      y: i % 2 === 0 ? -80 : 80, ease: 'none',
-      scrollTrigger: { trigger: glow.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1.5 }
+  const heroSection = document.querySelector('section.dark-section');
+  const stickyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) stickyBar.classList.add('visible');
+      else stickyBar.classList.remove('visible');
     });
-  });
+  }, { threshold: 0 });
+  if (heroSection) stickyObserver.observe(heroSection);
 </script>
 
 </body>
