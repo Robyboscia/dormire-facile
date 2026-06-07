@@ -107,10 +107,16 @@
 
 <!-- ══ OTO ALERT BAR ══ -->
 <div class="oto-alert">
-  <p style="font-size:15px;font-weight:700;color:#fff;letter-spacing:.02em;">
-    ⚠ ATTENZIONE — Questa pagina non verrà mostrata mai più.
-    <span style="font-weight:400;color:rgba(255,255,255,.85);"> Chiudendo perdi l'accesso a questa offerta per sempre.</span>
-  </p>
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
+    <p style="font-size:15px;font-weight:700;color:#fff;letter-spacing:.02em;">
+      ⚠ ATTENZIONE — Questa pagina non verrà mostrata mai più.
+      <span style="font-weight:400;color:rgba(255,255,255,.85);"> Chiudendo perdi l'accesso a questa offerta per sempre.</span>
+    </p>
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:6px 14px;flex-shrink:0;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:#fff;line-height:1;letter-spacing:.05em;text-shadow:0 0 14px rgba(255,255,255,.6);" id="topTimerDisplay">05:00</span>
+    </div>
+  </div>
 </div>
 
 
@@ -500,22 +506,22 @@
   function tickTimer() {
     const heroDisplay = document.getElementById('heroTimerDisplay');
     const stickyDisplay = document.getElementById('stickyTimerDisplay');
+    const topDisplay = document.getElementById('topTimerDisplay');
     const heroWrap = document.getElementById('heroTimer');
 
     if (remaining <= 0) {
-      heroDisplay.textContent = '00:00';
-      stickyDisplay.textContent = '00:00';
+      [heroDisplay, stickyDisplay, topDisplay].forEach(el => el.textContent = '00:00');
       heroWrap.classList.add('timer-expired');
       return;
     }
     remaining--;
-    heroDisplay.textContent = fmtTime(remaining);
-    stickyDisplay.textContent = fmtTime(remaining);
+    const t = fmtTime(remaining);
+    heroDisplay.textContent = t;
+    stickyDisplay.textContent = t;
+    topDisplay.textContent = t;
 
-    // Pulse rosso sotto i 60 secondi
     if (remaining <= 60) {
-      heroDisplay.style.animation = 'timerPulse .5s ease-in-out infinite';
-      stickyDisplay.style.animation = 'timerPulse .5s ease-in-out infinite';
+      [heroDisplay, stickyDisplay, topDisplay].forEach(el => el.style.animation = 'timerPulse .5s ease-in-out infinite');
     }
     setTimeout(tickTimer, 1000);
   }
