@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offerta Esclusiva — I Protocolli Pratici del Sonno · Roberto Boscia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap"></noscript>
+
+  <style>
+    :root {
+      --petrol:#0E2A36; --slate:#2F4652; --bg:#F6F5F1; --white:#FFFFFF;
+      --green:#6D8A73; --amber:#C88A2B; --amber-h:#A66E18; --amber-dim:#C9A64E;
+      --text-d:#F6F5F1; --text-d2:rgba(246,245,241,0.55);
+      --text-l:#0E2A36; --text-l2:#3D5260; --text-l3:#7A8F98;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text-l);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.022;pointer-events:none;z-index:9998;mix-blend-mode:overlay;}
+    .f-display{font-family:'Cormorant Garamond',serif;}
+    .dark-section{background:var(--petrol);color:var(--text-d);}
+    .dark-section .muted{color:var(--text-d2);}
+    .light-section{background:var(--bg);color:var(--text-l);}
+    .light-section .muted{color:var(--text-l3);}
+    .light-section .semi{color:var(--text-l2);}
+    .btn-amber{display:inline-flex;align-items:center;gap:9px;background:var(--amber);color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background 220ms,transform 220ms,box-shadow 220ms;}
+    .btn-amber:hover{background:var(--amber-h);transform:translateY(-2px);box-shadow:0 16px 44px rgba(200,138,43,.32);}
+    .btn-amber.lg{font-size:17px;padding:18px 40px;}
+    .btn-ghost-d{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(246,245,241,.28);color:var(--text-d);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;padding:12px 24px;border-radius:4px;text-decoration:none;background:none;cursor:pointer;transition:background 220ms,border-color 220ms;}
+    .btn-ghost-d:hover{background:rgba(246,245,241,.06);border-color:rgba(246,245,241,.5);}
+    .badge-amber{display:inline-flex;align-items:center;gap:6px;background:rgba(200,138,43,.1);border:1px solid rgba(200,138,43,.28);color:var(--amber);font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding:5px 13px;border-radius:100px;font-family:'DM Sans',sans-serif;}
+    .badge-red{display:inline-flex;align-items:center;gap:6px;background:rgba(192,71,63,.12);border:1px solid rgba(192,71,63,.3);color:#e07070;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding:5px 13px;border-radius:100px;font-family:'DM Sans',sans-serif;}
+    .rule-d{height:1px;background:rgba(246,245,241,.1);}
+    .rule-amber{height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent);opacity:.4;}
+    .aline{display:block;width:32px;height:2px;background:var(--amber);border-radius:2px;margin-bottom:16px;}
+    .card-l{background:var(--white);border:1px solid rgba(14,42,54,.08);border-radius:8px;transition:border-color 280ms,transform 280ms,box-shadow 280ms;}
+    .card-d{background:rgba(255,255,255,.04);border:1px solid rgba(246,245,241,.08);border-radius:8px;}
+    .price{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1;}
+    .reveal{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s ease;}
+    .reveal.revealed{opacity:1;transform:translateY(0);}
+    @keyframes enterUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+    .e1{animation:enterUp .7s ease forwards .05s;opacity:0;}
+    .e2{animation:enterUp .7s ease forwards .2s;opacity:0;}
+    .e3{animation:enterUp .7s ease forwards .38s;opacity:0;}
+    .e4{animation:enterUp .7s ease forwards .54s;opacity:0;}
+    .e5{animation:enterUp .7s ease forwards .70s;opacity:0;}
+    .sp{padding:80px 32px;}
+    .sp-sm{padding:56px 32px;}
+    .inner{max-width:1160px;margin:auto;}
+    .inner-md{max-width:800px;margin:auto;}
+    .inner-sm{max-width:620px;margin:auto;}
+    .check-icon{flex-shrink:0;margin-top:2px;}
+
+    /* OTO alert bar */
+    .oto-alert{background:linear-gradient(90deg,rgba(192,71,63,.15),rgba(192,71,63,.08));border-bottom:1px solid rgba(192,71,63,.3);padding:12px 24px;text-align:center;}
+
+    /* Protocol category label */
+    .cat-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:100px;}
+    .cat-base{background:rgba(109,138,115,.12);color:#4A6E52;border:1px solid rgba(109,138,115,.25);}
+    .cat-adapt{background:rgba(200,138,43,.1);color:var(--amber);border:1px solid rgba(200,138,43,.28);}
+    .cat-adv{background:rgba(14,42,54,.08);color:var(--petrol);border:1px solid rgba(14,42,54,.15);}
+    .cat-adv-d{background:rgba(246,245,241,.06);color:var(--text-d2);border:1px solid rgba(246,245,241,.15);}
+
+    /* Protocol card */
+    .proto-card{background:var(--white);border:1px solid rgba(14,42,54,.08);border-radius:8px;padding:24px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color 280ms,transform 280ms,box-shadow 280ms;}
+    .proto-card:hover{border-color:rgba(200,138,43,.25);transform:translateY(-2px);box-shadow:0 12px 36px rgba(14,42,54,.07);}
+    .proto-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+    /* Strikethrough price */
+    .price-old{font-size:18px;color:var(--text-l3);text-decoration:line-through;font-family:'DM Sans',sans-serif;font-weight:400;}
+
+    /* Pulse dot */
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:pulseAnim 2.4s ease-in-out infinite;display:inline-block;}
+    @keyframes pulseAnim{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(200,138,43,.5);}50%{opacity:.7;box-shadow:0 0 0 7px rgba(200,138,43,0);}}
+
+    /* Separator */
+    .cat-sep{display:flex;align-items:center;gap:14px;margin:32px 0 16px;}
+    .cat-sep-line{flex:1;height:1px;background:rgba(14,42,54,.08);}
+
+    @media(max-width:768px){
+      .sp{padding:56px 20px;}
+      .sp-sm{padding:40px 20px;}
+      .btn-amber.lg{font-size:15px;padding:16px 28px;}
+      .proto-card{padding:18px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ OTO ALERT BAR ══ -->
+<div class="oto-alert">
+  <p style="font-size:13px;font-weight:600;color:#e07070;letter-spacing:.03em;">
+    ⚠ ATTENZIONE — Questa pagina non verrà mostrata mai più.
+    <span style="font-weight:400;color:rgba(224,112,112,.8);"> Chiudendo perdi l'accesso a questa offerta per sempre.</span>
+  </p>
+</div>
+
+
+<!-- ══ HERO OTO ══ -->
+<section class="dark-section" style="padding:72px 32px 64px;position:relative;overflow:hidden;">
+  <div style="position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(200,138,43,.07) 0%,transparent 65%);top:-200px;right:-150px;pointer-events:none;"></div>
+  <div style="position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(109,138,115,.06) 0%,transparent 70%);bottom:-100px;left:-100px;pointer-events:none;"></div>
+
+  <div class="inner-sm" style="position:relative;z-index:1;text-align:center;">
+
+    <div class="e1">
+      <span class="badge-amber">Offerta Unica — Solo adesso</span>
+    </div>
+
+    <h1 class="e2 f-display" style="font-size:clamp(32px,5.5vw,72px);font-weight:400;line-height:1.1;color:var(--text-d);margin-top:24px;">
+      Aspetta — hai il libro.<br>
+      <em style="color:var(--amber);">Ora aggiungi i protocolli pratici.</em>
+    </h1>
+
+    <p class="e3" style="font-size:clamp(15px,1.8vw,18px);line-height:1.8;margin-top:24px;color:var(--text-d2);max-width:520px;margin-left:auto;margin-right:auto;">
+      Il libro ti spiega <strong style="color:var(--text-d);">perché</strong> il sonno funziona così. Questi protocolli ti dicono esattamente <strong style="color:var(--text-d);">cosa fare</strong>, passo dopo passo, in ogni situazione concreta — dalla sera di ogni giorno fino alle notti più difficili.
+    </p>
+
+    <div class="e4" style="margin-top:36px;display:inline-block;background:rgba(255,255,255,.04);border:1px solid rgba(200,138,43,.2);border-radius:8px;padding:20px 32px;">
+      <p style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-d2);margin-bottom:8px;">Quello che stai per ricevere</p>
+      <p class="f-display" style="font-size:clamp(22px,3vw,32px);color:var(--text-d);font-weight:400;">8 protocolli operativi in PDF</p>
+      <p style="font-size:13px;color:var(--text-d2);margin-top:6px;">scaricabili immediatamente dopo l'acquisto</p>
+    </div>
+
+    <div class="e5" style="margin-top:36px;">
+      <a href="#offerta" class="btn-amber lg">
+        Sì, voglio i protocolli — €97
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p style="font-size:12px;color:var(--text-d2);margin-top:12px;">
+        <a href="#" id="skipLink" style="color:var(--text-d2);text-decoration:underline;text-underline-offset:3px;opacity:.6;">No grazie, non mi servono i protocolli pratici</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ IL PROBLEMA DEL "SO MA NON FACCIO" ══ -->
+<section class="light-section sp-sm" style="background:#EEF0EC;">
+  <div class="inner-sm">
+    <div class="reveal">
+      <span class="aline"></span>
+      <h2 class="f-display" style="font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--petrol);line-height:1.3;">
+        Conoscere la teoria è il primo passo.<br>
+        <em style="color:var(--amber);">Sapere esattamente cosa fare ogni sera è il secondo.</em>
+      </h2>
+    </div>
+    <div class="reveal" style="margin-top:28px;max-width:560px;">
+      <p class="semi" style="font-size:16px;line-height:1.85;margin-bottom:16px;">
+        Quante volte hai letto qualcosa di utile e poi — di notte, quando contava davvero — non ricordavi cosa fare concretamente?
+      </p>
+      <p class="semi" style="font-size:16px;line-height:1.85;">
+        Questi protocolli eliminano quel gap. Sono checklist operative e guide step-by-step costruite per essere usate <strong style="color:var(--petrol);">nel momento in cui ne hai bisogno</strong> — non rilette sul divano, ma aperte sul telefono alle 23:00 o in aeroporto con il jet lag.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ I PROTOCOLLI ══ -->
+<section class="light-section sp">
+  <div class="inner-md">
+
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <h2 class="f-display" style="font-size:clamp(26px,4vw,54px);font-weight:400;color:var(--petrol);">Gli 8 protocolli inclusi</h2>
+      <p class="semi" style="font-size:16px;margin-top:12px;line-height:1.7;max-width:440px;margin-left:auto;margin-right:auto;">Tre categorie. Otto situazioni reali. Istruzioni operative per ognuna.</p>
+    </div>
+
+    <!-- CATEGORIA: BASE -->
+    <div class="reveal">
+      <div class="cat-sep">
+        <div class="cat-sep-line"></div>
+        <span class="cat-label cat-base">Protocolli di Base</span>
+        <div class="cat-sep-line"></div>
+      </div>
+      <p class="semi" style="font-size:13px;line-height:1.7;margin-bottom:20px;text-align:center;">Le fondamenta quotidiane — da applicare ogni sera per costruire un sonno strutturalmente sano.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(109,138,115,.1);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6E52" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-base">Base</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Rituale di Spegnimento</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">La sequenza precisa da eseguire nelle ultime 60–90 minuti prima di dormire: luce, temperatura, stimoli cognitivi, alimentazione. Il check step-by-step per mandare al sistema nervoso il segnale inequivocabile che è ora di dormire.</p>
+          </div>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(109,138,115,.1);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6E52" stroke-width="1.6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-base">Base</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Anti-Risveglio</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">Ti svegli nel cuore della notte e non riesci a riaddormentarti? Questo protocollo ha istruzioni precise per ogni scenario: risveglio da stress, da temperatura, da pensieri. Sai esattamente cosa fare entro i primi 3 minuti per evitare di restare sveglio ore.</p>
+          </div>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(109,138,115,.1);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6E52" stroke-width="1.6"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-base">Base</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Checklist Svuota-Mente</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">La mente iperattiva è il killer numero uno del sonno profondo. Questa checklist ti guida in un processo di scarico cognitivo strutturato — to-do, pensieri irrisolti, preoccupazioni — in modo che il cervello possa finalmente staccare davvero.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CATEGORIA: ADATTAMENTO -->
+    <div class="reveal">
+      <div class="cat-sep" style="margin-top:48px;">
+        <div class="cat-sep-line"></div>
+        <span class="cat-label cat-adapt">Protocolli di Adattamento</span>
+        <div class="cat-sep-line"></div>
+      </div>
+      <p class="semi" style="font-size:13px;line-height:1.7;margin-bottom:20px;text-align:center;">Per quando il tuo ritmo circadiano deve fare i conti con il mondo reale.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(200,138,43,.08);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C88A2B" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-adapt">Adattamento</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Jet Lag da Viaggio</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">Il protocollo pre, durante e post volo per sincronizzare il tuo orologio biologico al nuovo fuso in meno di 24 ore. Timing preciso per luce, melatonina, alimentazione e attività fisica. Applicabile sia verso est che verso ovest.</p>
+          </div>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(200,138,43,.08);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C88A2B" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-adapt">Adattamento</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Social Jet Lag</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">Il fenomeno che colpisce chi dorme e si sveglia a orari completamente diversi nei weekend rispetto ai giorni feriali — con gli stessi effetti biologici di un volo intercontinentale. Il protocollo per ridurre il gap e non ricominciare ogni lunedì da zero.</p>
+          </div>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(200,138,43,.08);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C88A2B" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-adapt">Adattamento</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Lontano da Casa</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">Hotel, casa di amici, stanza d'albergo — ambienti non ottimizzati che sabotano il sonno. Questo protocollo ti dà le mosse esatte per adattare qualsiasi ambiente entro 10 minuti: luce, rumore, temperatura, routine portatile.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CATEGORIA: AVANZATI -->
+    <div class="reveal">
+      <div class="cat-sep" style="margin-top:48px;">
+        <div class="cat-sep-line"></div>
+        <span class="cat-label cat-adv">Protocolli Avanzati</span>
+        <div class="cat-sep-line"></div>
+      </div>
+      <p class="semi" style="font-size:13px;line-height:1.7;margin-bottom:20px;text-align:center;">Tecniche di biohacking per chi vuole spingere oltre la qualità del sonno profondo.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(14,42,54,.06);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--petrol)" stroke-width="1.6"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-adv">Avanzato</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Protocollo 3:30</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">Ti svegli sistematicamente tra le 3 e le 4 del mattino con il cuore che batte forte e non riesci a capire perché? Non è un caso. Questo protocollo identifica le cause biologiche specifiche di questo pattern e fornisce la contromisura esatta — ormonale, metabolica e ambientale.</p>
+          </div>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-icon" style="background:rgba(14,42,54,.06);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--petrol)" stroke-width="1.6"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+              <span class="cat-label cat-adv">Avanzato</span>
+            </div>
+            <h3 style="font-size:17px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Bio-Ice Hack</h3>
+            <p class="semi" style="font-size:14px;line-height:1.7;">Come usare la manipolazione termica — freddo strategico prima e durante il sonno — per aumentare la percentuale di sonno profondo (NREM) e accelerare il recupero. Il protocollo completo con temperatura, timing e metodi pratici anche senza attrezzatura costosa.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ OFFERTA ══ -->
+<section class="dark-section sp" id="offerta" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(200,138,43,.07) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
+
+  <div class="inner-sm reveal" style="position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="badge-red">⏳ Solo in questa pagina</span>
+      <h2 class="f-display" style="font-size:clamp(26px,4.5vw,56px);font-weight:400;color:var(--text-d);margin-top:18px;line-height:1.2;">
+        Tutto incluso.<br>
+        <em style="color:var(--amber);">Un'unica volta.</em>
+      </h2>
+    </div>
+
+    <div class="card-d" style="padding:40px 44px;border-color:rgba(200,138,43,.2);">
+
+      <!-- Cosa ricevi -->
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8D4B0" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p style="font-size:15px;color:var(--text-d);">3 Protocolli di Base — uso quotidiano</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8D4B0" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p style="font-size:15px;color:var(--text-d);">3 Protocolli di Adattamento — jet lag, social jet lag, fuori casa</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8D4B0" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p style="font-size:15px;color:var(--text-d);">2 Protocolli Avanzati — 3:30 e Bio-Ice Hack</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8D4B0" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p style="font-size:15px;color:var(--text-d);">Formato PDF — scaricabili e consultabili offline sul telefono</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8D4B0" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p style="font-size:15px;color:var(--text-d);">Accesso immediato dopo l'acquisto</p>
+        </div>
+      </div>
+
+      <div class="rule-d" style="margin-bottom:28px;"></div>
+
+      <!-- Prezzo -->
+      <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:28px;flex-wrap:wrap;">
+        <span class="price f-display" style="font-size:clamp(56px,8vw,80px);color:var(--text-d);">€97</span>
+        <div style="padding-bottom:14px;">
+          <p class="price-old" style="color:var(--text-d2);">valore €197</p>
+          <p style="font-size:13px;color:#A8D4B0;margin-top:2px;">✓ accesso istantaneo</p>
+        </div>
+      </div>
+
+      <a href="#" class="btn-amber lg" style="width:100%;justify-content:center;font-size:17px;">
+        Sì, aggiungo i protocolli al mio ordine — €97
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <p style="font-size:12px;text-align:center;margin-top:14px;color:var(--text-d2);line-height:1.6;">
+        Pagamento sicuro · Download immediato · Questa offerta non sarà riproposta
+      </p>
+
+    </div>
+
+    <!-- Skip link -->
+    <div style="text-align:center;margin-top:24px;">
+      <a href="#" id="skipLink2" style="font-size:13px;color:var(--text-d2);text-decoration:underline;text-underline-offset:3px;opacity:.5;">No grazie, non mi servono i protocolli pratici</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ PERCHÉ ORA ══ -->
+<section class="light-section sp-sm" style="background:#EEF0EC;">
+  <div class="inner-sm">
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;text-align:center;">
+
+      <div>
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,138,43,.1);border:1px solid rgba(200,138,43,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <p style="font-size:15px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Applicazione immediata</p>
+        <p class="semi" style="font-size:13px;line-height:1.7;">Puoi usare il primo protocollo già stanotte, prima ancora di aprire il libro.</p>
+      </div>
+
+      <div>
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(109,138,115,.08);border:1px solid rgba(109,138,115,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A6E52" stroke-width="1.6"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <p style="font-size:15px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Complementari al libro</p>
+        <p class="semi" style="font-size:13px;line-height:1.7;">I protocolli si basano sui meccanismi spiegati nel libro — si potenziano a vicenda.</p>
+      </div>
+
+      <div>
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(14,42,54,.06);border:1px solid rgba(14,42,54,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--petrol)" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <p style="font-size:15px;font-weight:600;color:var(--petrol);margin-bottom:6px;">Sempre con te</p>
+        <p class="semi" style="font-size:13px;line-height:1.7;">PDF ottimizzati per mobile. Apri il protocollo giusto nel momento in cui ti serve.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer class="dark-section" style="padding:36px 32px;border-top:1px solid rgba(246,245,241,.06);">
+  <div class="inner" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="pulse"></div>
+      <span class="f-display" style="font-style:italic;font-size:19px;color:var(--text-d);">Dormire è facile…</span>
+    </div>
+    <p style="font-size:12px;color:var(--text-d2);text-align:right;">© 2024 Roberto Boscia · Tutti i diritti riservati</p>
+  </div>
+</footer>
+
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
