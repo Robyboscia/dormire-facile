@@ -81,11 +81,24 @@
     .cat-sep{display:flex;align-items:center;gap:14px;margin:32px 0 16px;}
     .cat-sep-line{flex:1;height:1px;background:rgba(14,42,54,.08);}
 
+    /* Timer */
+    .timer-wrap{display:inline-flex;align-items:center;gap:10px;background:rgba(192,71,63,.12);border:1px solid rgba(192,71,63,.3);border-radius:6px;padding:10px 18px;}
+    .timer-digits{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,40px);font-weight:400;color:#e07070;line-height:1;letter-spacing:.04em;min-width:4ch;text-align:center;}
+    .timer-expired .timer-digits{color:rgba(224,112,112,.4);}
+    @keyframes timerPulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+    .timer-colon{animation:timerPulse 1s step-start infinite;color:#e07070;font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,40px);}
+
+    /* Sticky bar */
+    .sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(14,42,54,.97);backdrop-filter:blur(16px);border-top:1px solid rgba(200,138,43,.25);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transform:translateY(100%);transition:transform 320ms ease;}
+    .sticky-bar.visible{transform:translateY(0);}
+
     @media(max-width:768px){
       .sp{padding:56px 20px;}
       .sp-sm{padding:40px 20px;}
       .btn-amber.lg{font-size:15px;padding:16px 28px;}
       .proto-card{padding:18px 20px;}
+      .sticky-bar{flex-direction:column;padding:10px 16px;gap:10px;}
+      .sticky-bar .sticky-left{text-align:center;}
     }
   </style>
 </head>
@@ -126,7 +139,15 @@
       <p style="font-size:13px;color:var(--text-d2);margin-top:6px;">scaricabili immediatamente dopo l'acquisto</p>
     </div>
 
-    <div class="e5" style="margin-top:36px;">
+    <div class="e4" style="margin-top:28px;">
+      <p style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#e07070;margin-bottom:10px;">⏳ Questa offerta scade tra</p>
+      <div class="timer-wrap" id="heroTimer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e07070" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="timer-digits" id="heroTimerDisplay">05:00</span>
+      </div>
+    </div>
+
+    <div class="e5" style="margin-top:28px;">
       <a href="#offerta" class="btn-amber lg">
         Sì, voglio i protocolli — €97
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -437,7 +458,24 @@
 </footer>
 
 
+<!-- ══ STICKY BAR ══ -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-left" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(192,71,63,.15);border:1px solid rgba(192,71,63,.3);border-radius:4px;padding:6px 12px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e07070" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e07070;line-height:1;" id="stickyTimerDisplay">05:00</span>
+    </div>
+    <p style="color:var(--text-d2);font-size:13px;line-height:1.4;">8 protocolli pratici del sonno · Offerta valida solo ora</p>
+  </div>
+  <a href="#offerta" class="btn-amber" style="white-space:nowrap;flex-shrink:0;">
+    Aggiungi al mio ordine — €97
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+
 <script>
+  // Scroll reveal
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -447,6 +485,51 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Countdown timer — 5 minuti
+  const DURATION = 5 * 60;
+  let remaining = DURATION;
+
+  function fmtTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+  }
+
+  function tickTimer() {
+    const heroDisplay = document.getElementById('heroTimerDisplay');
+    const stickyDisplay = document.getElementById('stickyTimerDisplay');
+    const heroWrap = document.getElementById('heroTimer');
+
+    if (remaining <= 0) {
+      heroDisplay.textContent = '00:00';
+      stickyDisplay.textContent = '00:00';
+      heroWrap.classList.add('timer-expired');
+      return;
+    }
+    remaining--;
+    heroDisplay.textContent = fmtTime(remaining);
+    stickyDisplay.textContent = fmtTime(remaining);
+
+    // Pulse rosso sotto i 60 secondi
+    if (remaining <= 60) {
+      heroDisplay.style.animation = 'timerPulse .5s ease-in-out infinite';
+      stickyDisplay.style.animation = 'timerPulse .5s ease-in-out infinite';
+    }
+    setTimeout(tickTimer, 1000);
+  }
+  tickTimer();
+
+  // Sticky bar — appare dopo lo scroll dell'hero
+  const stickyBar = document.getElementById('stickyBar');
+  const heroSection = document.querySelector('section.dark-section');
+  const stickyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) stickyBar.classList.add('visible');
+      else stickyBar.classList.remove('visible');
+    });
+  }, { threshold: 0 });
+  if (heroSection) stickyObserver.observe(heroSection);
 </script>
 
 </body>
