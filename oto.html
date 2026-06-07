@@ -56,7 +56,8 @@
     .check-icon{flex-shrink:0;margin-top:2px;}
 
     /* OTO alert bar */
-    .oto-alert{background:linear-gradient(90deg,rgba(192,71,63,.15),rgba(192,71,63,.08));border-bottom:1px solid rgba(192,71,63,.3);padding:12px 24px;text-align:center;}
+    .oto-alert{position:fixed;top:0;left:0;right:0;z-index:300;background:linear-gradient(90deg,rgba(160,40,34,.97),rgba(192,60,52,.97));border-bottom:2px solid rgba(255,100,85,.5);padding:14px 24px;text-align:center;backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(192,60,52,.4);}
+    body{padding-top:52px;}
 
     /* Protocol category label */
     .cat-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:100px;}
@@ -106,9 +107,9 @@
 
 <!-- ══ OTO ALERT BAR ══ -->
 <div class="oto-alert">
-  <p style="font-size:13px;font-weight:600;color:#e07070;letter-spacing:.03em;">
+  <p style="font-size:15px;font-weight:700;color:#fff;letter-spacing:.02em;">
     ⚠ ATTENZIONE — Questa pagina non verrà mostrata mai più.
-    <span style="font-weight:400;color:rgba(224,112,112,.8);"> Chiudendo perdi l'accesso a questa offerta per sempre.</span>
+    <span style="font-weight:400;color:rgba(255,255,255,.85);"> Chiudendo perdi l'accesso a questa offerta per sempre.</span>
   </p>
 </div>
 
