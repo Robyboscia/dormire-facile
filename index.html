@@ -43,6 +43,7 @@
     :root {
       --petrol:#0E2A36; --slate:#2F4652; --bg:#F6F5F1; --white:#FFFFFF;
       --green:#6D8A73; --amber:#C88A2B; --amber-h:#A66E18; --amber-dim:#C9A64E;
+      --amber-btn:#8B5E0F; --amber-btn-h:#6F4A0A;
       --text-d:#F6F5F1; --text-d2:rgba(246,245,241,0.55);
       --text-l:#0E2A36; --text-l2:#3D5260; --text-l3:#7A8F98;
     }
@@ -61,8 +62,8 @@
     .nav-logo{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--text-d);display:flex;align-items:center;gap:10px;}
     .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:pulseAnim 2.4s ease-in-out infinite;}
     @keyframes pulseAnim{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(200,138,43,.5);}50%{opacity:.7;box-shadow:0 0 0 7px rgba(200,138,43,0);}}
-    .btn-amber{display:inline-flex;align-items:center;gap:9px;background:var(--amber);color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background 220ms,transform 220ms,box-shadow 220ms;}
-    .btn-amber:hover{background:var(--amber-h);transform:translateY(-2px);box-shadow:0 16px 44px rgba(200,138,43,.32);}
+    .btn-amber{display:inline-flex;align-items:center;gap:9px;background:var(--amber-btn);color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background 220ms,transform 220ms,box-shadow 220ms;}
+    .btn-amber:hover{background:var(--amber-btn-h);transform:translateY(-2px);box-shadow:0 16px 44px rgba(200,138,43,.32);}
     .btn-amber.lg{font-size:17px;padding:18px 40px;}
     .btn-ghost-d{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(246,245,241,.28);color:var(--text-d);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:400;padding:13px 26px;border-radius:4px;text-decoration:none;transition:background 220ms,border-color 220ms;}
     .btn-ghost-d:hover{background:rgba(246,245,241,.06);border-color:rgba(246,245,241,.5);}
@@ -142,6 +143,7 @@
 </nav>
 
 
+<main>
 <!-- ══ HERO ══ -->
 <section class="dark-section" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 32px 80px;position:relative;overflow:hidden;">
   <div style="position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(200,138,43,.08) 0%,transparent 70%);top:-200px;right:-150px;pointer-events:none;"></div>
@@ -844,6 +846,8 @@
   </div>
 </section>
 
+
+</main>
 
 <!-- ══ FOOTER ══ -->
 <footer class="dark-section" style="padding:36px 32px;border-top:1px solid rgba(246,245,241,.06);">
