@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /oto.html
+
+Sitemap: https://www.dormirefacile.com/sitemap.xml

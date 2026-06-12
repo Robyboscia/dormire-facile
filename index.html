@@ -11,13 +11,23 @@
   <meta property="og:image" content="https://www.dormirefacile.com/images/og_image.webp">
   <meta property="og:url" content="https://www.dormirefacile.com/">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.dormirefacile.com/">
+  <meta name="theme-color" content="#0E2A36">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="images/book_cover.webp" fetchpriority="high">
 
   <!-- Preload font critici (catena reale dal profiler) -->
   <link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-300-normal-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-400-italic-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/dm-sans-300-normal-latin.woff2" crossorigin>
+  <noscript><style>.e1,.e2,.e3,.e4,.e5,.e6{animation:none!important;opacity:1!important;transform:none!important;}.reveal{opacity:1!important;transform:none!important;}</style></noscript>
   <style>
     /* Self-hosted fonts */
     @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/cormorant-garamond-300-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
@@ -58,7 +68,7 @@
     .light-section{background:var(--bg);color:var(--text-l);}
     .light-section .muted{color:var(--text-l3);}
     .light-section .semi{color:var(--text-l2);}
-    .nav-wrap{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,42,54,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(246,245,241,.07);}
+    .nav-wrap{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,42,54,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(246,245,241,.07);contain:layout paint;will-change:transform;}
     .nav-inner{max-width:1200px;margin:auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;}
     .nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--text-d);display:flex;align-items:center;gap:10px;}
     .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:pulseAnim 2.4s ease-in-out infinite;}
@@ -88,8 +98,8 @@
     .reveal{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s ease;}
     .reveal.revealed{opacity:1;transform:translateY(0);}
     @keyframes enterUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
-    .e1{animation:enterUp .7s ease forwards .05s;opacity:0;}
-    .e2{animation:enterUp .7s ease forwards .2s;opacity:0;}
+    .e1{animation:enterUp .7s ease forwards;opacity:0;}
+    .e2{animation:enterUp .7s ease forwards;opacity:0;}
     .e3{animation:enterUp .7s ease forwards .38s;opacity:0;}
     .e4{animation:enterUp .7s ease forwards .54s;opacity:0;}
     .e5{animation:enterUp .7s ease forwards .70s;opacity:0;}
@@ -918,6 +928,127 @@
     });
   }, { threshold: 0 });
   if (heroSection) stickyObserver.observe(heroSection);
+</script>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dormirefacile.com/#organization",
+      "name": "Roberto Boscia",
+      "url": "https://www.dormirefacile.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.dormirefacile.com/images/roberto-boscia.webp"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dormirefacile.com/#website",
+      "url": "https://www.dormirefacile.com/",
+      "name": "Dormire è facile… se sai come farlo!",
+      "publisher": { "@id": "https://www.dormirefacile.com/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.dormirefacile.com/#webpage",
+      "url": "https://www.dormirefacile.com/",
+      "name": "Dormire è facile... se sai come farlo! — Roberto Boscia",
+      "description": "Il sistema scientifico per ottimizzare ogni ora di sonno, svegliarti riposato ogni mattina e trasformare il sonno nel tuo strumento di performance. 14 capitoli + bonus.",
+      "isPartOf": { "@id": "https://www.dormirefacile.com/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dormirefacile.com/" }]
+      }
+    },
+    {
+      "@type": "Book",
+      "@id": "https://www.dormirefacile.com/#product",
+      "name": "Dormire è facile... se sai come farlo!",
+      "description": "Il sistema completo, scientifico e testato per ottimizzare ogni ora di sonno. 14 capitoli + capitolo bonus su sonno e diabete.",
+      "image": "https://www.dormirefacile.com/images/book_cover.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Roberto Boscia",
+        "jobTitle": "Farmacista e studioso di medicina integrativa"
+      },
+      "inLanguage": "it",
+      "numberOfPages": "14",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.dormirefacile.com/",
+        "price": "29.90",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "EUR" },
+          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "IT" }
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Il libro è disponibile anche in formato ebook?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Per ora il libro è disponibile solo in formato cartaceo. La versione fisica include tutti i 14 capitoli più il capitolo bonus \"Sonno e Diabete\" stampato e rilegato." }
+        },
+        {
+          "@type": "Question",
+          "name": "In quanto tempo arriva il libro fisico?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Il libro viene spedito entro 1-2 giorni lavorativi dall'ordine e arriva in 3-5 giorni lavorativi su tutto il territorio italiano. La spedizione è completamente gratuita." }
+        },
+        {
+          "@type": "Question",
+          "name": "I costi di spedizione sono inclusi nel prezzo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. I €29,90 includono già la spedizione gratuita in tutta Italia. Nessun costo nascosto al checkout." }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa rende questo libro diverso dagli altri sul sonno?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Questo libro parte dalla biologia: ritmo circadiano, fasi NREM e REM, biohacking degli integratori, onde binaurali, messa a terra, caffeina strategica. 14 capitoli di strategie scientificamente provate applicabili subito." }
+        },
+        {
+          "@type": "Question",
+          "name": "È adatto anche a chi non ha gravi problemi di sonno?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Il libro è utile sia per chi soffre di insonnia, sia per chi vuole portare la qualità del sonno a un livello superiore." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- GA4 caricamento differito — sostituisci G-XXXXXXXXXX con il tuo Measurement ID -->
+<script>
+(function(){
+  var loaded = false;
+  function loadGA(){
+    if(loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      anonymize_ip: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  }
+  ['click','scroll','keydown','touchstart'].forEach(function(e){
+    document.addEventListener(e, loadGA, {once:true, passive:true});
+  });
+  setTimeout(loadGA, 3000);
+})();
 </script>
 
 </body>
