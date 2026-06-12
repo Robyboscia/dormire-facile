@@ -1025,13 +1025,21 @@
 }
 </script>
 
-<!-- GA4 caricamento differito — sostituisci G-LKPFXV9CWT con il tuo Measurement ID -->
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0E2A36;color:#e8dcc8;padding:1rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.875rem;box-shadow:0 -2px 12px rgba(0,0,0,.3);align-items:center;gap:1rem;flex-wrap:wrap;">
+  <p style="margin:0;flex:1;min-width:200px;">Questo sito usa cookie analitici (Google Analytics) per migliorare l'esperienza. <a href="/privacy.html" style="color:#C88A2B;text-decoration:underline;">Privacy Policy</a></p>
+  <div style="display:flex;gap:.5rem;flex-shrink:0;">
+    <button id="cookie-accept" style="background:#C88A2B;color:#fff;border:none;padding:.5rem 1.25rem;border-radius:4px;cursor:pointer;font-size:.875rem;font-weight:500;">Accetta</button>
+    <button id="cookie-reject" style="background:transparent;color:#e8dcc8;border:1px solid #e8dcc8;padding:.5rem 1.25rem;border-radius:4px;cursor:pointer;font-size:.875rem;">Rifiuta</button>
+  </div>
+</div>
+
+<!-- GA4 — carica solo dopo consenso cookie -->
 <script>
 (function(){
-  var loaded = false;
+  var CONSENT_KEY = 'df_cookie_consent';
+
   function loadGA(){
-    if(loaded) return;
-    loaded = true;
     var s = document.createElement('script');
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LKPFXV9CWT';
     s.async = true;
@@ -1045,10 +1053,28 @@
       cookie_flags: 'SameSite=None;Secure'
     });
   }
-  ['click','scroll','keydown','touchstart'].forEach(function(e){
-    document.addEventListener(e, loadGA, {once:true, passive:true});
-  });
-  setTimeout(loadGA, 3000);
+
+  function hideBanner(){
+    var b = document.getElementById('cookie-banner');
+    if(b) b.style.display = 'none';
+  }
+
+  var consent = localStorage.getItem(CONSENT_KEY);
+  if(consent === 'accepted'){
+    loadGA();
+  } else if(consent === null){
+    var banner = document.getElementById('cookie-banner');
+    if(banner) banner.style.display = 'flex';
+    document.getElementById('cookie-accept').addEventListener('click', function(){
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      hideBanner();
+      loadGA();
+    });
+    document.getElementById('cookie-reject').addEventListener('click', function(){
+      localStorage.setItem(CONSENT_KEY, 'rejected');
+      hideBanner();
+    });
+  }
 })();
 </script>
 
