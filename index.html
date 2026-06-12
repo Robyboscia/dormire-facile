@@ -21,7 +21,8 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="images/book_cover.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/book_cover-1x.webp" fetchpriority="high"
+        imagesrcset="images/book_cover-1x.webp 1x, images/book_cover.webp 2x">
 
   <!-- Preload font critici (catena reale dal profiler) -->
   <link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-400-normal-latin.woff2" crossorigin>
@@ -72,8 +73,8 @@
     .nav-wrap{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,42,54,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(246,245,241,.07);contain:layout paint;will-change:transform;}
     .nav-inner{max-width:1200px;margin:auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;}
     .nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--text-d);display:flex;align-items:center;gap:10px;}
-    .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:pulseAnim 2.4s ease-in-out infinite;}
-    @keyframes pulseAnim{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(200,138,43,.5);}50%{opacity:.7;box-shadow:0 0 0 7px rgba(200,138,43,0);}}
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:pulseAnim 2.4s ease-in-out infinite;will-change:opacity,transform;}
+    @keyframes pulseAnim{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.7;transform:scale(1.8);}}
     .btn-amber{display:inline-flex;align-items:center;gap:9px;background:var(--amber-btn);color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background 220ms,transform 220ms,box-shadow 220ms;}
     .btn-amber:hover{background:var(--amber-btn-h);transform:translateY(-2px);box-shadow:0 16px 44px rgba(200,138,43,.32);}
     .btn-amber.lg{font-size:17px;padding:18px 40px;}
@@ -118,7 +119,7 @@
 
     /* Book mockup */
     .book-wrap{perspective:900px;display:inline-block;}
-    .book-3d{display:flex;transform:rotateY(-20deg);transform-style:preserve-3d;filter:drop-shadow(-20px 20px 48px rgba(0,0,0,.6));transition:transform 400ms ease;}
+    .book-3d{display:flex;transform:rotateY(-20deg);transform-style:preserve-3d;filter:drop-shadow(-20px 20px 48px rgba(0,0,0,.6));transition:transform 400ms ease;will-change:transform;}
     .book-3d:hover{transform:rotateY(-8deg);}
     .book-spine{width:28px;background:linear-gradient(to right,#061520,#0a2030);border-radius:3px 0 0 3px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(200,138,43,.7);text-transform:uppercase;padding:16px 0;}
     .book-front{width:220px;height:308px;border-radius:0 4px 4px 0;overflow:hidden;position:relative;}
@@ -211,7 +212,10 @@
           <div class="book-3d">
             <div class="book-spine">BOSCIA</div>
             <div class="book-front">
-              <img src="images/book_cover.webp" alt="Dormire è facile se sai come farlo — Roberto Boscia" width="220" height="308" fetchpriority="high" decoding="async">
+              <img src="images/book_cover-1x.webp"
+                   srcset="images/book_cover-1x.webp 1x, images/book_cover.webp 2x"
+                   alt="Dormire è facile se sai come farlo — Roberto Boscia"
+                   width="220" height="308" fetchpriority="high" decoding="async">
             </div>
           </div>
         </div>
